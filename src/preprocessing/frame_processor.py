@@ -42,14 +42,15 @@ class FrameProcessor:
         Returns:
             numpy.ndarray: Processed frame (grayscale, resized, normalized)
         """
-        # Convert to grayscale
+        # Convert to grayscale with optimized method
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
-        # Resize to target shape - cv2.resize expects (width, height)
-        resized = cv2.resize(gray, (self.resize_shape[0], self.resize_shape[1]))
+        # Resize with INTER_NEAREST (fastest method)
+        resized = cv2.resize(gray, (self.resize_shape[0], self.resize_shape[1]), 
+                            interpolation=cv2.INTER_NEAREST)
         
-        # Normalize pixel values to [0, 1]
-        normalized = resized.astype(np.float32) / 255.0
+        # Normalize with faster method (avoid division)
+        normalized = resized.astype(np.float32) * (1.0/255.0)
         
         return normalized
     

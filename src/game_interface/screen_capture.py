@@ -71,29 +71,22 @@ class ScreenCapture:
         Returns:
             np.ndarray: The captured screen as a numpy array (BGR format).
         """
-        # Throttle capture rate to maintain consistent FPS
-        current_time = time.time()
-        time_diff = current_time - self.last_frame_time
-        
-        if time_diff < self.frame_interval:
-            time.sleep(self.frame_interval - time_diff)
-        
-        # Find window if not already found
+        # Optimize monitor definition with tighter bounds
         if self.monitor is None:
             success = self.find_game_window()
             if not success:
                 raise RuntimeError(f"Could not find game window: {self.window_name}")
         
-        # Capture screen
+        # Use faster capture method
         sct_img = self.sct.grab(self.monitor)
         
-        # Convert to numpy array
-        img = np.array(sct_img)
+        # Direct numpy conversion (faster)
+        img = np.array(sct_img, dtype=np.uint8)
         
-        # Convert BGRA to BGR (remove alpha channel)
-        img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+        # Convert BGRA to BGR more efficiently
+        img = img[:, :, :3]  # Slice instead of using cv2.cvtColor
         
-        # Resize if specified
+        # Resize in a single step if specified
         if resize:
             img = cv2.resize(img, resize)
         

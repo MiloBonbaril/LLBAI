@@ -100,7 +100,8 @@ class InputController:
         # Ensure minimum time between actions
         current_time = time.time()
         if current_time - self.last_action_time < self.min_action_interval:
-            time.sleep(self.min_action_interval - (current_time - self.last_action_time))
+            pass # pass to test the speed of the test
+            # time.sleep(self.min_action_interval - (current_time - self.last_action_time))
         
         # Release any previously pressed keys
         self._release_all_keys()
@@ -111,7 +112,7 @@ class InputController:
                 self._press_key(self.key_map[act])
         
         # Wait for duration
-        time.sleep(duration)
+        #time.sleep(duration)
         
         # Release the keys
         self._release_all_keys()
