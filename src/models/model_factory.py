@@ -19,8 +19,8 @@ class ModelFactory:
             config (dict): Configuration dictionary with model parameters
         """
         self.config = config
-        self.device = torch.device("cuda" if torch.cuda.is_available() and config.get("use_cuda", True) else "cpu")
-        print(f"Using device: {self.device}")
+        self.device = torch.device("cuda" if torch.cuda.is_available() and config.get("device", "cpu") == "cuda" else "cpu")
+        print(f"ModelFactory Using device: {self.device}")
         
     def create_model(self):
         """

@@ -10,8 +10,8 @@ pydirectinput>=1.0.4; platform_system=="Windows"
 pyautogui>=0.9.52
 
 # Future dependencies (will be needed in later phases)
-torch>=1.9.0
-torchvision>=0.10.0
+torch>=1.9.0 --index-url https://download.pytorch.org/whl/cu126
+torchvision>=0.10.0 --index-url https://download.pytorch.org/whl/cu126
 tqdm>=4.61.0
 
 coverage>=5.5.0

@@ -4,8 +4,8 @@ from typing import Tuple, Dict, Any, Optional, List
 import numpy as np
 
 # Import local modules
-from game_interface.screen_capture import ScreenCapture
-from game_interface.input_controller import InputController
+from src.game_interface.screen_capture import ScreenCapture
+from src.game_interface.input_controller import InputController
 
 
 class GameInterface:
