@@ -74,12 +74,12 @@ python src/main.py --window "LLBlaze" --record --resize 160 120
   - [x] Input Controller
   - [x] Basic Integration
 
-- [ ] Phase 2: Image Preprocessing
-  - [ ] Frame Processing
-  - [ ] Frame Stacking
+- [x] Phase 2: Image Preprocessing
+  - [x] Frame Processing
+  - [x] Frame Stacking
 
-- [ ] Phase 3: Neural Network Architecture
-  - [ ] CNN Model Implementation
+- [x] Phase 3: Neural Network Architecture
+  - [x] CNN Model Implementation
 
 - [ ] Phase 4: Reinforcement Learning System
   - [ ] Replay Memory
